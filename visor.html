@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es-BO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leer estudio en línea | Estudios Bíblicos RVR1960</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<div id="cabecera"></div>
+
+<section class="seccion-clara" style="padding-top:34px; padding-bottom:34px;">
+  <div class="contenedor">
+    <p><a href="estudios.html">&larr; Volver al catálogo de estudios</a></p>
+    <div class="visor-caja">
+      <div class="visor-cabecera">
+        <h3 id="titulo-estudio" style="color:#F8F3E7; margin:0;">Cargando estudio…</h3>
+        <a id="enlace-descarga" class="boton boton-claro" href="#" download>Descargar PDF</a>
+      </div>
+      <iframe id="marco-pdf" title="Visor de PDF del estudio bíblico"></iframe>
+    </div>
+    <p class="nota-formulario" style="margin-top:14px;">Si el PDF no se muestra en tu navegador, usa el botón "Descargar PDF" para guardarlo y abrirlo directamente en tu teléfono o computadora.</p>
+  </div>
+</section>
+
+<div id="pie"></div>
+
+<script src="js/componentes.js"></script>
+<script src="js/main.js"></script>
+<script>
+  const parametros = new URLSearchParams(window.location.search);
+  const archivo = parametros.get('archivo');
+  const titulo = parametros.get('titulo') || 'Estudio bíblico';
+
+  document.getElementById('titulo-estudio').textContent = titulo;
+  document.title = titulo + ' | Estudios Bíblicos RVR1960';
+
+  if (archivo) {
+    document.getElementById('marco-pdf').src = archivo;
+    document.getElementById('enlace-descarga').href = archivo;
+  } else {
+    document.getElementById('titulo-estudio').textContent = 'No se indicó ningún archivo';
+  }
+</script>
+</body>
+</html>
